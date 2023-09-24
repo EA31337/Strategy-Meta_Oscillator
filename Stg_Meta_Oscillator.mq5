@@ -1,6 +1,6 @@
 /**
  * @file
- * Implements Trend meta strategy.
+ * Implements Oscillator meta strategy.
  */
 
 // Includes conditional compilation directives.
@@ -32,13 +32,13 @@ input ENUM_LOG_LEVEL Log_Level = V_INFO;  // Log level.
 input bool Info_On_Chart = true;          // Display info on chart.
 
 // Includes strategy class.
-#include "Stg_Meta_Trend.mqh"
+#include "Stg_Meta_Oscillator.mqh"
 
 // Defines.
-#define ea_name "Strategy Meta Trend"
+#define ea_name "Strategy Meta Oscillator"
 #define ea_version "2.000"
-#define ea_desc "Trend meta strategy to filter out signals of other strategies based on the current trend."
-#define ea_link "https://github.com/EA31337/Strategy-Meta_Trend"
+#define ea_desc "Oscillator meta strategy to filter out signals of other strategies based on the current oscillator."
+#define ea_link "https://github.com/EA31337/Strategy-Meta_Oscillator"
 #define ea_author "EA31337 Ltd"
 
 // Properties.
@@ -64,7 +64,7 @@ int OnInit() {
   bool _result = true;
   EAParams ea_params(__FILE__, Log_Level);
   ea = new EA(ea_params);
-  _result &= ea.StrategyAdd<Stg_Meta_Trend>(Active_Tfs);
+  _result &= ea.StrategyAdd<Stg_Meta_Oscillator>(Active_Tfs);
   return (_result ? INIT_SUCCEEDED : INIT_FAILED);
 }
 

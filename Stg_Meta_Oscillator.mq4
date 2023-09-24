@@ -6,8 +6,8 @@
 
 /**
  * @file
- * Implements Trend meta strategy.
+ * Implements Oscillator meta strategy.
  */
 
 // Includes the main code.
-#include "Stg_Meta_Trend.mq5"
+#include "Stg_Meta_Oscillator.mq5"
