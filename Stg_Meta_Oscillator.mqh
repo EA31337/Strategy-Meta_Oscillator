@@ -37,8 +37,8 @@ enum ENUM_STG_META_OSCILLATOR_TYPE {
 
 // User input params.
 INPUT2_GROUP("Meta Oscillator strategy: main params");
-INPUT2 ENUM_STRATEGY Meta_Oscillator_Strategy = STRAT_STOCHASTIC;  // Strategy to filter by oscillator
-INPUT2 ENUM_STG_META_OSCILLATOR_TYPE Meta_Oscillator_Type = STG_META_OSCILLATOR_TYPE_CCI;  // Oscillator type
+INPUT2 ENUM_STRATEGY Meta_Oscillator_Strategy = STRAT_MA_TREND;  // Strategy to filter by oscillator
+INPUT2 ENUM_STG_META_OSCILLATOR_TYPE Meta_Oscillator_Type = STG_META_OSCILLATOR_TYPE_STDDEV;  // Oscillator type
 INPUT2_GROUP("Meta Oscillator strategy: common params");
 INPUT2 float Meta_Oscillator_LotSize = 0;                // Lot size
 INPUT2 int Meta_Oscillator_SignalOpenMethod = 0;         // Signal open method
