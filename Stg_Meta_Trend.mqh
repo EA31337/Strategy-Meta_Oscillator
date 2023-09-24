@@ -301,10 +301,10 @@ class Stg_Meta_Trend : public Strategy {
     uint _ishift = _shift;
     switch (_cmd) {
       case ORDER_TYPE_BUY:
-        _result &= _indi[_shift][0] >= 50 && _indi[_shift + 1][0] >= 50;
+        _result &= _indi[_shift][0] >= 50 - _level && _indi[_shift + 1][0] >= 50 - _level;
         break;
       case ORDER_TYPE_SELL:
-        _result &= _indi[_shift][0] <= 50 && _indi[_shift + 1][0] <= 50;
+        _result &= _indi[_shift][0] <= 50 + _level && _indi[_shift + 1][0] <= 50 + _level;
         break;
     }
     _level = _level == 0.0f ? strat.Ptr().Get<float>(STRAT_PARAM_SOL) : _level;
@@ -318,15 +318,20 @@ class Stg_Meta_Trend : public Strategy {
    * Check strategy's closing signal.
    */
   bool SignalClose(ENUM_ORDER_TYPE _cmd, int _method, float _level = 0.0f, int _shift = 0) {
-    bool _result = false;
+    bool _result = true;
     if (!strat.IsSet()) {
       // Returns false when strategy is not set.
-      return _result;
+      return false;
     }
-    _level = _level == 0.0f ? strat.Ptr().Get<float>(STRAT_PARAM_SCL) : _level;
-    _method = _method == 0 ? strat.Ptr().Get<int>(STRAT_PARAM_SCM) : _method;
-    _shift = _shift == 0 ? strat.Ptr().Get<int>(STRAT_PARAM_SHIFT) : _shift;
-    _result |= strat.Ptr().SignalClose(Order::NegateOrderType(_cmd), _method, _level, _shift);
+    IndicatorBase *_indi = GetIndicator();
+    switch (_cmd) {
+      case ORDER_TYPE_BUY:
+        _result &= _indi[_shift][0] <= 50 + _level && _indi[_shift + 1][0] <= 50 + _level;
+        break;
+      case ORDER_TYPE_SELL:
+        _result &= _indi[_shift][0] >= 50 - _level && _indi[_shift + 1][0] >= 50 - _level;
+        break;
+    }
     return _result;
   }
 };
