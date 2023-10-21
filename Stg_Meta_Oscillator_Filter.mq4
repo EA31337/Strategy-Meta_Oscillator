@@ -6,8 +6,8 @@
 
 /**
  * @file
- * Implements Oscillator meta strategy.
+ * Implements Oscillator Filter meta strategy.
  */
 
 // Includes the main code.
-#include "Stg_Meta_Oscillator.mq5"
+#include "Stg_Meta_Oscillator_Filter.mq5"
