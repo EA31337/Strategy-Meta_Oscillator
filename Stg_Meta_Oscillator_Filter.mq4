@@ -6,7 +6,7 @@
 
 /**
  * @file
- * Implements Oscillator meta strategy.
+ * Implements Oscillator Filter meta strategy.
  */
 
 // Includes the main code.
