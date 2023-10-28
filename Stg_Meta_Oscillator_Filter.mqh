@@ -217,7 +217,7 @@ class Stg_Meta_Oscillator_Filter : public Strategy {
    * Event on strategy's init.
    */
   void OnInit() {
-    StrategyAdd(Meta_Oscillator_Filter_Strategy);
+    StrategyAdd(Meta_Oscillator_Filter_Strategy, 0);
     // Initialize indicators.
     switch (::Meta_Oscillator_Filter_Type) {
       case STG_META_OSCILLATOR_FILTER_TYPE_AC:  // AC
